@@ -1,34 +1,43 @@
 import React, {useState} from 'react';
-import {Text, View, Button} from 'react-native';
+import {Text, View, Button, TouchableOpacity, StyleSheet} from 'react-native';
 
 const ContadorScreen = () => {
   const [contador, setContador] = useState(10);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-      }}>
-      <Text
-        style={{
-          fontSize: 30,
-          textAlign: 'center',
-        }}>
-        Contador: {contador}
-      </Text>
+    <View style={style.container}>
+      <Text style={style.title}>Contador: {contador}</Text>
 
-        <Button
-            title="Aumentar"
-            onPress={() => setContador(contador + 1)}
-        />
-        <Button
-            title="Disminuir"
-            onPress={() => setContador(contador - 1)}
-        />
-
+      <TouchableOpacity
+        onPress={() => {
+          setContador(contador + 1);
+        }}
+        style={ style.button }>
+        <View>
+          <Text style={{color: '#fff', textAlign: 'center'}}>Aumentar</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
+
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  title: {
+    fontSize: 30,
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 10,
+    margin: 10,
+    borderRadius: 10,
+  },
+});
 
 export default ContadorScreen;
