@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Text, View, Button, TouchableOpacity, StyleSheet} from 'react-native';
+import FloatingActionButton from '../components/FloatingActionButton';
 
 const ContadorScreen = () => {
   const [contador, setContador] = useState(10);
@@ -7,16 +8,16 @@ const ContadorScreen = () => {
   return (
     <View style={style.container}>
       <Text style={style.title}>Contador: {contador}</Text>
-
-      <TouchableOpacity
-        onPress={() => {
-          setContador(contador + 1);
-        }}
-        style={ style.button }>
-        <View>
-          <Text style={{color: '#fff', textAlign: 'center'}}>Aumentar</Text>
-        </View>
-      </TouchableOpacity>
+      <FloatingActionButton
+        title="+1"
+        onPress={() => setContador(contador + 1)}
+        position="bottomLeft"
+      />
+      <FloatingActionButton
+        title="-1"
+        onPress={() => setContador(contador - 1)}
+        position="bottomRight"
+      />
     </View>
   );
 };
@@ -31,12 +32,6 @@ const style = StyleSheet.create({
   title: {
     fontSize: 30,
     textAlign: 'center',
-  },
-  button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    margin: 10,
-    borderRadius: 10,
   },
 });
 
